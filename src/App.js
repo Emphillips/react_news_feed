@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component }from 'react';
+import Article from './components/articles'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  constructor(props) {
+  super(props)
+  
+  this.state  = {
+    posts: [],
+    }
+  }
+fetchData() {
+ 
+  fetch(`http://hn.algolia.com/api/v1/search?query=...`)
+    .then(res => res.json())
+    .then(data =>
+      this.setState({
+        posts: data.hits,
+    
+      })
+    )
 }
 
+componentDidMount() {
+  this.fetchData();
+}
+
+render() {
+  return ( 
+    <div className="main-app">
+      {this.state.posts.map((posts) => (
+        <div>
+          <Article/>
+        </div>
+      ))}
+      </div>
+  )
+    }
+  }
 export default App;
+
