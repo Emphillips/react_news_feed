@@ -1,11 +1,11 @@
 import React, {Component} from 'react'; 
 
-const Article = (props) => {
+const Article = ({title}) => {
 
   return (
     <div>
     <h2>Author</h2>
-    <p>Date</p>
+    <p>{title}</p>
     </div>
   )
 }

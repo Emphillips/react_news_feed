@@ -31,11 +31,12 @@ render() {
     <div className="main-app">
       {this.state.posts.map((posts) => (
         <div>
-          <Article/>
+          <Article
+          title = {posts.title}/>
         </div>
       ))}
       </div>
-  )
+      )
     }
   }
 export default App;
