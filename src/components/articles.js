@@ -1,11 +1,13 @@
 import React, {Component} from 'react'; 
+import { pseudoRandomBytes } from 'crypto';
 
 const Article = ({title}) => {
 
   return (
-    <div>
+    <div className= 'article'>
     <h2>Author</h2>
-    <p>{title}</p>
+    <p><span className="sub-text">{title.title}</span>
+    </p>
     </div>
   )
 }
